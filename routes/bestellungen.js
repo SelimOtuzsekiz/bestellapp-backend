@@ -1,15 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const Bestellung = require("../models/bestellung.model");
-const { verifyUser } = require('../authenticate');
-
+const { verifyUser } = require("../authenticate");
 
 router
   .route("/")
 
   // zeige alle bestellungen, nur für admin
-  .get(verifyUser,(req, res, next) => {
-    Bestellung.find({}).then((data) => {
+  .get(verifyUser, (req, res, next) => {
+    
+    //wenn eine query "status" existiert, suche nach status, sonst zeige alles
+    let query = {};
+    if(req.query.status){
+      query = { Status: req.query.status};
+    }
+    Bestellung.find(query).then((data) => {
       res.json(data);
     });
   })
@@ -23,7 +28,7 @@ router
   .put()
   .delete();
 
-  router
+router
   .route("/:id")
   // zeige eine spezifische bestellung, nur admin?
   .get((req, res, next) => {
@@ -32,12 +37,12 @@ router
       .catch((err) => next(err));
   })
 
-    // update eine spezifische bestellung, nur admin
-  .put(verifyUser,(req, res, next) => {
+  // update eine spezifische bestellung, nur admin
+  .put(verifyUser, (req, res, next) => {
     Bestellung.findByIdAndUpdate(
       req.params.id,
       {
-        Status: req.body.Status
+        Status: req.body.Status,
       },
       {
         new: true,
@@ -47,6 +52,5 @@ router
       .then((data) => res.json(data))
       .catch((err) => next(err));
   });
-   
 
 module.exports = router;
