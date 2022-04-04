@@ -25,7 +25,6 @@ router
       .then((data) => res.json(data))
       .catch((err) => next(err));
   })
-  .put()
   .delete();
 
 router
@@ -53,4 +52,12 @@ router
       .catch((err) => next(err));
   });
 
+  router.route("/reset")
+
+  .get( (req, res, next) => {
+    Bestellung.updateMany( {},  { Status: "offen" } )
+      .then((data) => res.json(data))
+      .catch((err) => next(err));
+  })
+  
 module.exports = router;

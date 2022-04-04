@@ -14,51 +14,44 @@ const ProduktSchema = new Schema({
     type: Number,
     required: true,
   },
-  Kommentar: {
-    type: String,
-  },
-  Anzahl: {
-    type: Number,
-    default: 1,
-  },
 });
 
 const AddressSchema = new Schema({
-  Vorname: {
+  vorname: {
     type: String,
     required: true,
   },
-  Nachname: {
+  nachname: {
     type: String,
     required: true,
   },
-  Strasse: {
+  strasse: {
     type: String,
     required: true,
   },
-  Zusatz: {
+  zusatz: {
     type: String,
   },
-  Hausnummer: {
+  hausnummer: {
     type: Number,
     required: true,
     min: 1,
     max: 999,
   },
-  PLZ: {
+  plz: {
     type: Number,
     required: true,
     min: 10000,
     max: 99999,
   },
-  Stadt: {
+  stadt: {
     type: String,
     required: true,
   },
-  Firma: {
+  firma: {
     type: String,
   },
-  Telefonnummer: {
+  telefonnummer: {
     type: String,
     required: true,
   },
