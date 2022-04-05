@@ -17,41 +17,41 @@ const ProduktSchema = new Schema({
 });
 
 const AddressSchema = new Schema({
-  vorname: {
+  Vorname: {
     type: String,
     required: true,
   },
-  nachname: {
+  Nachname: {
     type: String,
     required: true,
   },
-  strasse: {
+  Strasse: {
     type: String,
     required: true,
   },
-  zusatz: {
+  Zusatz: {
     type: String,
   },
-  hausnummer: {
+  Hausnummer: {
     type: Number,
     required: true,
     min: 1,
     max: 999,
   },
-  plz: {
+  PLZ: {
     type: Number,
     required: true,
     min: 10000,
     max: 99999,
   },
-  stadt: {
+  Stadt: {
     type: String,
     required: true,
   },
-  firma: {
+  Firma: {
     type: String,
   },
-  telefonnummer: {
+  Telefonnummer: {
     type: String,
     required: true,
   },
